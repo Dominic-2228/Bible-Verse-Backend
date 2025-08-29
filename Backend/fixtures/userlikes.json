@@ -1,0 +1,18 @@
+[
+  {
+    "model": "Backend.UserLike",
+    "pk": 1,
+    "fields": {
+      "post": 1,
+      "user": 1
+    }
+  },
+  {
+    "model": "Backend.UserLike",
+    "pk": 2,
+    "fields": {
+      "post": 1,
+      "user": 2
+    }
+  }
+]

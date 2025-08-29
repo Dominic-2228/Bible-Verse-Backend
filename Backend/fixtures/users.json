@@ -1,0 +1,41 @@
+[
+  {
+    "model": "Backend.CustomUser",
+    "pk": 1,
+    "fields": {
+      "username": "domtill",
+      "first_name": "Dom",
+      "last_name": "Till",
+      "email": "nunyas@nope.com",
+      "is_staff": true,
+      "profilePhoto": "IMG/DSC_4587(1).jpg",
+      "password": "pbkdf2_sha256$260000$fakehash$fakehashvalue"
+    }
+  },
+  {
+    "model": "Backend.CustomUser",
+    "pk": 2,
+    "fields": {
+      "username": "ava",
+      "first_name": "Ava",
+      "last_name": "Thompson",
+      "email": "ava.thompson@example.com",
+      "is_staff": false,
+      "profilePhoto": "https://randomuser.me/api/portraits/women/2.jpg",
+      "password": "pbkdf2_sha256$260000$fakehash$fakehashvalue"
+    }
+  },
+  {
+    "model": "Backend.CustomUser",
+    "pk": 3,
+    "fields": {
+      "username": "ethan",
+      "first_name": "Ethan",
+      "last_name": "Brooks",
+      "email": "ethan.brooks@example.com",
+      "is_staff": false,
+      "profilePhoto": "https://randomuser.me/api/portraits/men/3.jpg",
+      "password": "pbkdf2_sha256$260000$fakehash$fakehashvalue"
+    }
+  }
+]

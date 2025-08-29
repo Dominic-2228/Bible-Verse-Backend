@@ -1,0 +1,30 @@
+[
+  {
+    "model": "Backend.Post",
+    "pk": 1,
+    "fields": {
+      "title": "Grace Revealed in Romans 5:8",
+      "body": "Christ died for me while I was still a sinner. That's love!",
+      "date": "2025-05-08T10:01:00+0000",
+      "bibleBookId": "ROM",
+      "bibleChapterId": 5,
+      "bibleVerseId": 8,
+      "user": 1,
+      "likes": 12
+    }
+  },
+  {
+    "model": "Backend.Post",
+    "pk": 2,
+    "fields": {
+      "title": "Hope in Isaiah 40:31",
+      "body": "Those who wait on the Lord shall renew their strength.",
+      "date": "2025-05-08T10:02:00+0000",
+      "bibleBookId": "ISA",
+      "bibleChapterId": 40,
+      "bibleVerseId": 31,
+      "user": 1,
+      "likes": 9
+    }
+  }
+]
