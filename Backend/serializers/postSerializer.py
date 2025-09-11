@@ -25,6 +25,4 @@ class PostSerializer(serializers.ModelSerializer):
             "feelingId",
             "likes",
             "liked_by_users",
-            "created_at",
-            "updated_at",
         ]
