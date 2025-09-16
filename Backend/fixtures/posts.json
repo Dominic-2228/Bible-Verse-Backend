@@ -26,5 +26,89 @@
       "user": 1,
       "likes": 9
     }
+  },
+  {
+    "model": "Backend.Post",
+    "pk": 3,
+    "fields": {
+      "title": "Peace in Philippians 4:7",
+      "body": "The peace of God, which surpasses all understanding, will guard your hearts and minds.",
+      "date": "2025-05-08T10:03:00+0000",
+      "bibleBookId": "PHI",
+      "bibleChapterId": 4,
+      "bibleVerseId": 7,
+      "user": 2,
+      "likes": 15
+    }
+  },
+  {
+    "model": "Backend.Post",
+    "pk": 4,
+    "fields": {
+      "title": "Strength in Joshua 1:9",
+      "body": "Be strong and courageous. Do not be afraid, for the Lord your God is with you wherever you go.",
+      "date": "2025-05-08T10:04:00+0000",
+      "bibleBookId": "JOS",
+      "bibleChapterId": 1,
+      "bibleVerseId": 9,
+      "user": 2,
+      "likes": 7
+    }
+  },
+  {
+    "model": "Backend.Post",
+    "pk": 5,
+    "fields": {
+      "title": "Love in 1 Corinthians 13:4",
+      "body": "Love is patient, love is kind. It does not envy, it does not boast, it is not proud.",
+      "date": "2025-05-08T10:05:00+0000",
+      "bibleBookId": "1CO",
+      "bibleChapterId": 13,
+      "bibleVerseId": 4,
+      "user": 3,
+      "likes": 22
+    }
+  },
+  {
+    "model": "Backend.Post",
+    "pk": 6,
+    "fields": {
+      "title": "Faith in Hebrews 11:1",
+      "body": "Faith is the assurance of things hoped for, the conviction of things not seen.",
+      "date": "2025-05-08T10:06:00+0000",
+      "bibleBookId": "HEB",
+      "bibleChapterId": 11,
+      "bibleVerseId": 1,
+      "user": 3,
+      "likes": 18
+    }
+  },
+  {
+    "model": "Backend.Post",
+    "pk": 7,
+    "fields": {
+      "title": "Comfort in Psalm 23:4",
+      "body": "Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me.",
+      "date": "2025-05-08T10:07:00+0000",
+      "bibleBookId": "PSA",
+      "bibleChapterId": 23,
+      "bibleVerseId": 4,
+      "user": 1,
+      "likes": 30
+    }
+  },
+  {
+    "model": "Backend.Post",
+    "pk": 8,
+    "fields": {
+      "title": "Wisdom in Proverbs 3:5",
+      "body": "Trust in the Lord with all your heart and lean not on your own understanding.",
+      "date": "2025-05-08T10:08:00+0000",
+      "bibleBookId": "PRO",
+      "bibleChapterId": 3,
+      "bibleVerseId": 5,
+      "user": 2,
+      "likes": 25
+    }
   }
 ]

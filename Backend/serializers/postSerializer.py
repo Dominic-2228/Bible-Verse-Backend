@@ -5,12 +5,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class PostSerializer(serializers.ModelSerializer):
-    # Optional: include the user's likes
-    liked_by_users = serializers.PrimaryKeyRelatedField(
-        many=True,
-        read_only=True,
-        source='likes'  # this uses the related_name="likes" on UserLike
-    )
+
     
     class Meta:
         model = Post
@@ -19,10 +14,10 @@ class PostSerializer(serializers.ModelSerializer):
             "user",
             "title",
             "body",
+            "date",
             "bibleBookId",
             "bibleChapterId",
             "bibleVerseId",
             "feelingId",
             "likes",
-            "liked_by_users",
         ]
