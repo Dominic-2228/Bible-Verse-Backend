@@ -18,6 +18,5 @@ class PostSerializer(serializers.ModelSerializer):
             "bibleBookId",
             "bibleChapterId",
             "bibleVerseId",
-            "feelingId",
             "likes",
         ]

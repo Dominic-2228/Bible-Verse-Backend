@@ -7,8 +7,6 @@ from django.http import HttpResponseServerError
 from django.shortcuts import get_object_or_404
 
 
-# reseeded database then everything broke
-# was working on my post, and it may be working
 class PostView(viewsets.ModelViewSet):
     def list(self, request): 
         try: 
@@ -34,9 +32,9 @@ class PostView(viewsets.ModelViewSet):
         try:
             serializer = PostSerializer(data=request.data)
             if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                post = serializer.save()
+                return Response(PostSerializer(post).data, status=status.HTTP_201_CREATED)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         except Exception as ex:
             return HttpResponseServerError(ex)
 

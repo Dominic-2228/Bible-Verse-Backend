@@ -10,8 +10,6 @@ class Post(models.Model):
     bibleBookId = models.CharField(max_length=10)   # e.g., "ROM"
     bibleChapterId = models.IntegerField()
     bibleVerseId = models.IntegerField()
-
-    feelingId = models.IntegerField(null=True, blank=True)  # link to a Feeling model later?
     likes = models.PositiveIntegerField(default=0)
 
     # Dates

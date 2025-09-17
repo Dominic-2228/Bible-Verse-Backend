@@ -108,5 +108,3 @@ class UserView(viewsets.ModelViewSet):
             return Response(
                 []
             )
-
-        return queryset
