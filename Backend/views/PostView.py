@@ -20,10 +20,14 @@ class PostView(viewsets.ModelViewSet):
         
     def retrieve(self, request, pk=None):
         try:
-            post = get_object_or_404(Post, pk=pk)
-            serializer = PostSerializer(post)
-            if post.user == pk:
-                return Response(serializer.data, status=status.HTTP_200_OK)
+            single_post = get_object_or_404(Post, pk=pk)
+            post = Post.objects.all()
+            single_serializer = PostSerializer(single_post)
+            post_list = []
+            for user in post:
+                if user.user_id == int(pk):
+                    post_list.append(user)
+            return Response([PostSerializer(ser).data for ser in post_list], status=status.HTTP_200_OK)
         except Exception as ex:
             return HttpResponseServerError(ex)
 
@@ -33,7 +37,7 @@ class PostView(viewsets.ModelViewSet):
             serializer = PostSerializer(data=request.data)
             if serializer.is_valid():
                 post = serializer.save()
-                return Response(PostSerializer(post).data, status=status.HTTP_201_CREATED)
+                return Response(post, status=status.HTTP_201_CREATED)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         except Exception as ex:
             return HttpResponseServerError(ex)
