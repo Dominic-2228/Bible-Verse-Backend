@@ -20,7 +20,7 @@ class PostView(viewsets.ModelViewSet):
         
     def retrieve(self, request, pk=None):
         try:
-            single_post = get_object_or_404(Post, pk=pk)
+            single_post = Post.objects.filter(pk=pk).first()
             post = Post.objects.all()
             single_serializer = PostSerializer(single_post)
             post_list = []

@@ -9,12 +9,9 @@ class NoteSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "user",
-            "book_id",
-            "chapter_id",
-            "verse_id",
+            "bookId",
+            "chapterId",
+            "verseId",
             "title",
             "body",
-            "created_at",
-            "updated_at",
         ]
-        read_only_fields = ["created_at", "updated_at"]

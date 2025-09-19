@@ -10,4 +10,4 @@ class Note(models.Model):
     body = models.TextField(blank=True)
 
     def __str__(self):
-        return f"{self.title or 'Note'} ({self.book_id} {self.chapter_id}:{self.verse_id})"
+        return f"{self.title or 'Note'} ({self.bookId} {self.chapterId}:{self.verseId})"

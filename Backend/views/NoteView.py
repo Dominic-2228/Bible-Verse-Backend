@@ -18,29 +18,40 @@ class NoteView(ViewSet):
       return HttpResponseServerError(ex)
     
   def retrieve(self, request, pk=None):
-        """GET /notes/{id} - Retrieve a single note"""
-        try:
-            single_note = get_object_or_404(Note, pk=pk)
-            note = Note.objects.all()
-            single_serializer = NoteSerializer(single_note)
-            note_list = []
-            for user in note:
-                if user.user_id == int(pk):
-                    note_list.append(user)
-            if len(note_list) > 0:
-                return Response([NoteSerializer(ser).data for ser in post_list], status=status.HTTP_200_OK)
-            else: 
-                return Response(single_serializer.data, status=status.HTTP_200_OK)
-        except Exception as ex:
-            return HttpResponseServerError(ex)
+    """GET /notes/{id} - Retrieve a single note or related notes"""
+    try:
+        notes = Note.objects.all()
+        single_note = Note.objects.filter(pk=pk).first()
+        note_list = [n for n in notes if int(n.user_id) == int(pk)]
+
+        if note_list:  # Found user-related notes
+            return Response(
+                [NoteSerializer(n).data for n in note_list],
+                status=status.HTTP_200_OK
+            )
+
+        if single_note:  # Found a single note by pk
+            return Response(NoteSerializer(single_note).data, status=status.HTTP_200_OK)
+
+        # If nothing found, return empty with 200 (or 404 if you prefer)
+        return Response([], status=status.HTTP_200_OK)
+
+    except Exception as ex:
+        # Log error to console for debugging
+        import traceback
+        print("ERROR in retrieve:", ex)
+        traceback.print_exc()
+
+        return HttpResponseServerError(str(ex))
+
 
   def create(self, request):
         """POST /notes - Create a new note"""
         try:
             serializer = NoteSerializer(data=request.data)
             if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
+                note = serializer.save(user=request.user)
+                return Response(note, status=status.HTTP_201_CREATED)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Exception as ex:
             return HttpResponseServerError(ex)
