@@ -17,8 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from Backend.views import CommentView, UserLikeView, UserView, NoteView
+from Backend.views import CommentView, UserLikeView, UserView
 from Backend.views.PostView import PostView
+from Backend.views.NoteView import NoteView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'posts', PostView, "post")

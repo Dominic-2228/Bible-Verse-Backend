@@ -20,9 +20,17 @@ class NoteView(ViewSet):
   def retrieve(self, request, pk=None):
         """GET /notes/{id} - Retrieve a single note"""
         try:
-            note = get_object_or_404(Note, pk=pk)
-            serializer = NoteSerializer(note)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            single_note = get_object_or_404(Note, pk=pk)
+            note = Note.objects.all()
+            single_serializer = NoteSerializer(single_note)
+            note_list = []
+            for user in note:
+                if user.user_id == int(pk):
+                    note_list.append(user)
+            if len(note_list) > 0:
+                return Response([NoteSerializer(ser).data for ser in post_list], status=status.HTTP_200_OK)
+            else: 
+                return Response(single_serializer.data, status=status.HTTP_200_OK)
         except Exception as ex:
             return HttpResponseServerError(ex)
 
