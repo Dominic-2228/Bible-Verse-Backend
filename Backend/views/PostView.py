@@ -40,7 +40,7 @@ class PostView(viewsets.ModelViewSet):
             serializer = PostSerializer(data=request.data)
             if serializer.is_valid():
                 post = serializer.save()
-                return Response(post, status=status.HTTP_201_CREATED)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         except Exception as ex:
             return HttpResponseServerError(ex)

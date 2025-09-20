@@ -51,7 +51,7 @@ class NoteView(ViewSet):
             serializer = NoteSerializer(data=request.data)
             if serializer.is_valid():
                 note = serializer.save(user=request.user)
-                return Response(note, status=status.HTTP_201_CREATED)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Exception as ex:
             return HttpResponseServerError(ex)
