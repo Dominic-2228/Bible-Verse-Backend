@@ -19,8 +19,8 @@ class UserLikeView(ViewSet):
     def retrieve(self, request, pk=None):
         """GET /userlikes/{id} - Retrieve a single like"""
         try:
-            like = get_object_or_404(UserLike, pk=pk)
-            serializer = UserLikeSerializer(like)
+            like = UserLike.objects.filter(user_id=pk)
+            serializer = UserLikeSerializer(like, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as ex:
             return HttpResponseServerError(ex)
@@ -29,7 +29,7 @@ class UserLikeView(ViewSet):
         """POST /userlikes - Create a new like"""
         try:
             serializer = UserLikeSerializer(data=request.data)
-            if serializer.is_valid():
+            if serializer.is_valid(): # returning the right data, just not valid for some reason
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -51,7 +51,7 @@ class UserLikeView(ViewSet):
     def destroy(self, request, pk=None):
         """DELETE /userlikes/{id} - Delete a like"""
         try:
-            like = get_object_or_404(UserLike, pk=pk)
+            like = get_object_or_404(UserLike, post_id=pk)
             like.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
         except Exception as ex:

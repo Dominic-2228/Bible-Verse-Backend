@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from Backend.models import User_Like
+from Backend.models import UserLike
 
 class UserLikeSerializer(serializers.ModelSerializer):
   class Meta: 
-    model = User_Like
+    model = UserLike
     fields = ["user", "post"]
