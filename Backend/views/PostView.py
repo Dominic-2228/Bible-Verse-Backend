@@ -5,9 +5,11 @@ from rest_framework import status
 from rest_framework.response import Response
 from django.http import HttpResponseServerError
 from django.shortcuts import get_object_or_404
+from django.db.models import Count
 
 
 class PostView(viewsets.ModelViewSet):
+    queryset = Post.objects.annotate(likes_count=Count("user_likes"))
     def list(self, request): 
         try: 
             post = Post.objects.all()

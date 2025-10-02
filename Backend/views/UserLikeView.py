@@ -29,9 +29,9 @@ class UserLikeView(ViewSet):
         """POST /userlikes - Create a new like"""
         try:
             serializer = UserLikeSerializer(data=request.data)
-            if serializer.is_valid(): # returning the right data, just not valid for some reason
-                serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            if serializer.is_valid(): 
+                instance = serializer.save()
+                return Response(UserLikeSerializer(instance).data, status=status.HTTP_201_CREATED)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Exception as ex:
             return HttpResponseServerError(ex)

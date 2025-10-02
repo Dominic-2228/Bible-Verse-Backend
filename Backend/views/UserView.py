@@ -90,7 +90,7 @@ class UserView(viewsets.ModelViewSet):
                 user.is_staff = True   # usually needed so they can access Django admin
                 user.save()
             token, created = Token.objects.get_or_create(user=user)
-            return Response({"token": token.key}, status=status.HTTP_201_CREATED)
+            return Response({"id": user.id, "username": user.username, "is_staff": user.is_staff, "token": token.key}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     @action(detail=False, methods=["post"], url_path="login")
