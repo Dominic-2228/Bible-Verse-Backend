@@ -24,13 +24,15 @@ class PostView(viewsets.ModelViewSet):
         try:
             single_post = Post.objects.filter(pk=pk).first()
             post = Post.objects.all()
-            single_serializer = PostSerializer(single_post)
             post_list = []
             for user in post:
                 if user.user_id == int(pk):
                     post_list.append(user)
             if len(post_list) > 0:
                 return Response([PostSerializer(ser).data for ser in post_list], status=status.HTTP_200_OK)
+            if single_post:
+                single_serializer = PostSerializer(single_post)
+                return Response(single_serializer.data, status=status.HTTP_200_OK)
             else: 
                 return Response([], status=status.HTTP_200_OK)
         except Exception as ex:
