@@ -32,7 +32,7 @@ class PostView(viewsets.ModelViewSet):
             if len(post_list) > 0:
                 return Response([PostSerializer(ser).data for ser in post_list], status=status.HTTP_200_OK)
             else: 
-                return Response(single_serializer.data, status=status.HTTP_200_OK)
+                return Response([], status=status.HTTP_200_OK)
         except Exception as ex:
             return HttpResponseServerError(ex)
 
@@ -41,7 +41,7 @@ class PostView(viewsets.ModelViewSet):
         try:
             serializer = PostSerializer(data=request.data)
             if serializer.is_valid():
-                post = serializer.save()
+                serializer.save(user=request.user)
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         except Exception as ex:
